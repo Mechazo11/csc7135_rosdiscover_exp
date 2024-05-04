@@ -1,9 +1,9 @@
 - action-clients: []
   action-servers: []
   filename: /home/ros_ws/src/csc7135_pkg1/launch/pkg1_bad.launch
-  fullname: /fetchcontroller_node
-  kind: fetchcontroller_node
-  name: fetchcontroller_node
+  fullname: /fetchsensorbad_node
+  kind: fetchsensorbad_node
+  name: fetchsensorbad_node
   namespace: /
   nodelet: false
   package: csc7135_pkg1
@@ -17,9 +17,9 @@
 - action-clients: []
   action-servers: []
   filename: /home/ros_ws/src/csc7135_pkg1/launch/pkg1_bad.launch
-  fullname: /fetchsensorbad_node
-  kind: fetchsensorbad_node
-  name: fetchsensorbad_node
+  fullname: /fetchcontroller_node
+  kind: fetchcontroller_node
+  name: fetchcontroller_node
   namespace: /
   nodelet: false
   package: csc7135_pkg1

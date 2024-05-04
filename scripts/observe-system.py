@@ -87,7 +87,7 @@ def observe_system(
         args += ["--output", output_filename]
         # args += ["--duration",  "600",  "--interval", "30", # duration controls how long to observe the system
         #          "--do-launch",  "--launch-sleep", "30"]
-        args += ["--duration",  "10",  "--interval", "3", # duration controls how long to observe the system
+        args += ["--duration",  "100",  "--interval", "10", # duration controls how long to observe the system
                  "--do-launch",  "--launch-sleep", "3"]
         if run_filename is not None:
             args += ["--run-script", run_filename]

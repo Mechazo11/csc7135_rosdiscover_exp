@@ -71,9 +71,11 @@ ROSDiscover toolchain.
 * **CXX-Extract**: Provides the implementation of the static component model recovery of ROS nodes from source code written in C++.
 
 When ROSDiscover is invoked to recover an architecture, it uses ROSWire to locate packages, launch files, etc.
+
 ROSDiscover subsequently invokes CXX-Extract when it encounters a node in a launch file it is processing, to parse
-the source, identify ROS API calls, and produce a component model. ROSDiscover then combines the component models
-according to the launch files being processed and resolves any parameters, arguments, unbound topics, etc. that may
+the source, identify ROS API calls, and produce a component model. 
+
+ROSDiscover then combines the component models according to the launch files being processed and resolves any parameters, arguments, unbound topics, etc. that may
 be in the component models to produce an architecture model.
 
 
