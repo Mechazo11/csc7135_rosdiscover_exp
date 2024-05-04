@@ -2,7 +2,7 @@ type: recovery
 subject: fetch_lsu
 docker:
   type: templated
-  image: test1
+  image: pkg1
 distro: noetic
 build_command: >
   catkin build -DCMAKE_EXPORT_COMPILE_COMMANDS=1
@@ -24,15 +24,15 @@ exclude_ros_packages:
 - fetch_ros/fetch_navigation
 apt_packages:
 - xvfb
-repositories: # Can we get rid of this?
-- name: fetch_ros
-  url: https://github.com/fetchrobotics/fetch_ros.git
-  version: 0.8.3
-- name: fetch_gazebo
-  url: https://github.com/fetchrobotics/fetch_gazebo.git
-  version: 0.9.2
+# repositories: # Can we get rid of this?
+# - name: fetch_ros
+#   url: https://github.com/fetchrobotics/fetch_ros.git
+#   version: 0.8.3
+# - name: fetch_gazebo
+#   url: https://github.com/fetchrobotics/fetch_gazebo.git
+#   version: 0.9.2
 sources:
 - /opt/ros/noetic/setup.bash
 - /home/ros_ws/devel/setup.bash
 launches:
-  - []
+  - /home/ros_ws/src/csc7135_pkg1/launch/pkg1_bad.launch

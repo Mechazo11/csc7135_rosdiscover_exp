@@ -61,8 +61,6 @@ def _observe_for_recovery_experiment(config: RecoveryExperimentConfig) -> None:
     )
 
 
-
-
 def observe_system(
     image: str,
     sources: t.Sequence[str],
@@ -87,7 +85,9 @@ def observe_system(
     }) as config_filename:
         args = ["observe", config_filename]
         args += ["--output", output_filename]
-        args += ["--duration",  "600",  "--interval", "30",
+        # args += ["--duration",  "600",  "--interval", "30", # duration controls how long to observe the system
+        #          "--do-launch",  "--launch-sleep", "30"]
+        args += ["--duration",  "50",  "--interval", "30", # duration controls how long to observe the system
                  "--do-launch",  "--launch-sleep", "30"]
         if run_filename is not None:
             args += ["--run-script", run_filename]
@@ -100,11 +100,9 @@ def observe_system(
             logger.remove(file_logger)
         logger.info(f"dynamically recovered system architecture for image [{image}]")
 
-
 def error(message: str) -> t.NoReturn:
     print(f"ERROR: {message}")
     sys.exit(1)
-
 
 def main() -> None:
     # remove all existing loggers
