@@ -1,25 +1,6 @@
 - action-clients: []
   action-servers: []
   filename: unknown
-  fullname: /fetchsensorbad_node
-  kind: ''
-  name: fetchsensorbad_node
-  namespace: /
-  nodelet: false
-  package: unknown
-  provenance: unknown
-  provides: []
-  pubs:
-  - format: sensor_msgs/Imu
-    implicit: false
-    name: /fetch/head_imu_data
-  reads: []
-  subs: []
-  uses: []
-  writes: []
-- action-clients: []
-  action-servers: []
-  filename: unknown
   fullname: /fetchcontroller_node
   kind: ''
   name: fetchcontroller_node
@@ -34,5 +15,24 @@
   - format: sensor_msgs/Imu
     implicit: false
     name: /fetch/head_imu_data
+  uses: []
+  writes: []
+- action-clients: []
+  action-servers: []
+  filename: unknown
+  fullname: /fetchsensorbad_node
+  kind: ''
+  name: fetchsensorbad_node
+  namespace: /
+  nodelet: false
+  package: unknown
+  provenance: unknown
+  provides: []
+  pubs:
+  - format: sensor_msgs/Imu
+    implicit: false
+    name: /fetch/head_imu_data
+  reads: []
+  subs: []
   uses: []
   writes: []
