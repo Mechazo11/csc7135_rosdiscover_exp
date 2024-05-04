@@ -1,12 +1,11 @@
 type: recovery
-subject: fetch
+subject: fetch_lsu
 docker:
   type: templated
-  image: rosdiscover-experiments/fetch:v0.8.3
-distro: melodic
+  image: test1
+distro: noetic
 build_command: >
   catkin build -DCMAKE_EXPORT_COMPILE_COMMANDS=1
-exclude_from_replication_package: true
 exclude_ros_packages:
 - orocos_kdl
 - python_orocos_kdl
@@ -25,10 +24,7 @@ exclude_ros_packages:
 - fetch_ros/fetch_navigation
 apt_packages:
 - xvfb
-#  - ros-melodic-gazebo-plugins
-#  - ros-melodic-image-proc
-#  - ros-melodic-image-transport-plugins
-repositories:
+repositories: # Can we get rid of this?
 - name: fetch_ros
   url: https://github.com/fetchrobotics/fetch_ros.git
   version: 0.8.3
@@ -36,11 +32,7 @@ repositories:
   url: https://github.com/fetchrobotics/fetch_gazebo.git
   version: 0.9.2
 sources:
-- /opt/ros/melodic/setup.bash
-- /ros_ws/devel/setup.bash
-
-# fetch_gazebo pickplace_playground.launch
-# fetch_gazebo_demo pick_place_demo.launch
+- /opt/ros/noetic/setup.bash
+- /home/ros_ws/devel/setup.bash
 launches:
-  - /ros_ws/src/fetch_gazebo/fetch_gazebo/launch/playground.launch
-  - /ros_ws/src/fetch_gazebo/fetch_gazebo_demo/launch/demo.launch
+  - []
