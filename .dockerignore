@@ -1,0 +1,7 @@
+images.tar
+images.tar.gz
+ros-temp/repos
+.git
+.workdir
+.cache
+*.log

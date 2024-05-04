@@ -1,0 +1,29 @@
+FROM python:3.9-alpine
+RUN apk add --no-cache \
+      git \
+      python3-dev \
+      libffi-dev \
+      musl-dev \
+      libressl-dev \
+      openssl-dev \
+      cargo \
+      py3-pip \
+      build-base \
+      docker \
+      gcc \
+      linux-headers \
+      openjdk8 \
+      bash \
+      less \
+ && rm -rf /tmp/*
+
+WORKDIR /code
+ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
+RUN /bin/sh -c python -m ensurepip --upgrade
+RUN CRYPTOGRAPHY_DONT_BUILD_RUST=1 pip3 install --no-binary cryptography pipenv cryptography
+
+ENTRYPOINT ["/bin/bash"]
+
+# docker run --rm -v d:/ROSDiscover/rosdiscover:/code -v d:/ROSDiscover/cache:/root/.roswire -v //var/run/docker.sock:/var/run/docker.sock -it build/rosdiscover-dev
+# pip3 install -e .
+# rosdiscover acme --acme fetch-demo.acme --check example/fetch-demo.yml

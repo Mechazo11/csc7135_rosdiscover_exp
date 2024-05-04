@@ -1,0 +1,6 @@
+Kind,observed,recovered,overapprox,underapprox
+Action Clients,0.0,0.0,0.0,0.0
+Action Servers,0.0,0.0,0.0,0.0
+Providers,8.0,8.0,0.0,0.0
+Publishers,20.0,20.0,10.0,10.0
+Subscribers,16.0,15.0,6.25,12.5

@@ -1,0 +1,20 @@
+FROM rosdiscover/cxx-extract:builder
+COPY --from=christimperley/llvm11 /opt/llvm11/ /opt/llvm11/
+WORKDIR /tmp/rosdiscover
+COPY . .
+RUN mkdir build \
+ && cd build \
+ && cmake \
+      -DCMAKE_PREFIX_PATH=/opt/llvm11 \
+      -DCMAKE_CXX_COMPILER=/opt/llvm11/bin/clang++ \
+      -DCMAKE_LINKER=/opt/llvm11/bin/lld \
+      -DCMAKE_INSTALL_PREFIX=/opt/rosdiscover \
+      -DCMAKE_CXX_FLAGS="-I/opt/llvm11/include -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS" \
+      .. \
+ && make install \
+ && rm -rf /tmp/*
+
+# this step is absolutely necessary in order to run any clang libtooling projects
+# ideally, we should perform this step via CMake
+RUN mkdir -p /opt/rosdiscover/lib \
+ && cp -r /opt/llvm11/lib/clang /opt/rosdiscover/lib/clang

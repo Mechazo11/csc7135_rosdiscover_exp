@@ -1,0 +1,255 @@
+{
+  "image": {
+    "sha256": "837f10530a57dc3438f6e40623ad40e099f84537fa8dd1bee1418d2b3b04116d"
+  },
+  "node-name": "xbeeCoordinator",
+  "package": {
+    "name": "autorally_core",
+    "path": "/ros_ws/src/autorally/autorally_core"
+  },
+  "sources": [
+    "/ros_ws/src/autorally/autorally_core/./src/xbee/XbeeCoordinator.cpp",
+    "/ros_ws/src/autorally/autorally_core/./src/xbee/XbeeInterface.cpp"
+  ],
+  "program": {
+    "program": {
+      "entrypoint": "main",
+      "functions": [
+        {
+          "name": "XbeeInterface::XbeeInterface",
+          "parameters": [
+            {
+              "index": 1,
+              "name": "port",
+              "type": "string"
+            },
+            {
+              "index": 0,
+              "name": "nh",
+              "type": "node-handle"
+            }
+          ],
+          "body": {
+            "kind": "compound",
+            "statements": [
+              {
+                "kind": "assignment",
+                "variable": "v0",
+                "value": {
+                  "kind": "reads-param",
+                  "name": {
+                    "kind": "concatenate",
+                    "lhs": {
+                      "kind": "arg",
+                      "name": "nh"
+                    },
+                    "rhs": {
+                      "kind": "concatenate",
+                      "lhs": {
+                        "kind": "node-name"
+                      },
+                      "rhs": {
+                        "kind": "string-literal",
+                        "literal": "/frameID"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "kind": "assignment",
+                "variable": "v1",
+                "value": {
+                  "kind": "reads-param",
+                  "name": {
+                    "kind": "concatenate",
+                    "lhs": {
+                      "kind": "arg",
+                      "name": "nh"
+                    },
+                    "rhs": {
+                      "kind": "concatenate",
+                      "lhs": {
+                        "kind": "node-name"
+                      },
+                      "rhs": {
+                        "kind": "string-literal",
+                        "literal": "/diagnosticInfo"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "XbeeCoordinator::XbeeCoordinator",
+          "parameters": [
+            {
+              "index": 1,
+              "name": "port",
+              "type": "string"
+            },
+            {
+              "index": 0,
+              "name": "nh",
+              "type": "node-handle"
+            }
+          ],
+          "body": {
+            "kind": "compound",
+            "statements": [
+              {
+                "kind": "call",
+                "callee": "XbeeInterface::XbeeInterface",
+                "arguments": {
+                  "nh": {
+                    "kind": "arg",
+                    "name": "nh"
+                  },
+                  "port": {
+                    "kind": "unknown"
+                  }
+                }
+              },
+              {
+                "kind": "subscribes-to",
+                "name": {
+                  "kind": "concatenate",
+                  "lhs": {
+                    "kind": "arg",
+                    "name": "nh"
+                  },
+                  "rhs": {
+                    "kind": "string-literal",
+                    "literal": "runstop"
+                  }
+                },
+                "format": "autorally_msgs/runstop"
+              },
+              {
+                "kind": "subscribes-to",
+                "name": {
+                  "kind": "concatenate",
+                  "lhs": {
+                    "kind": "arg",
+                    "name": "nh"
+                  },
+                  "rhs": {
+                    "kind": "string-literal",
+                    "literal": "gpsBaseRTCM3"
+                  }
+                },
+                "format": "std_msgs/ByteMultiArray"
+              }
+            ]
+          }
+        },
+        {
+          "name": "XbeeCoordinator::processXbeeOdom",
+          "parameters": [
+            {
+              "index": 1,
+              "name": "sender",
+              "type": "string"
+            },
+            {
+              "index": 0,
+              "name": "message",
+              "type": "string"
+            }
+          ],
+          "body": {
+            "kind": "compound",
+            "statements": [
+              {
+                "kind": "publishes-to",
+                "name": {
+                  "kind": "concatenate",
+                  "lhs": {
+                    "kind": "node-handle",
+                    "namespace": {
+                      "kind": "string-literal",
+                      "literal": ""
+                    }
+                  },
+                  "rhs": {
+                    "kind": "concatenate",
+                    "lhs": {
+                      "kind": "string-literal",
+                      "literal": "/pose_estimate_"
+                    },
+                    "rhs": {
+                      "kind": "unknown"
+                    }
+                  }
+                },
+                "format": "nav_msgs/Odometry"
+              }
+            ]
+          }
+        },
+        {
+          "name": "main",
+          "parameters": [
+            {
+              "index": 0,
+              "name": "argc",
+              "type": "integer"
+            }
+          ],
+          "body": {
+            "kind": "compound",
+            "statements": [
+              {
+                "kind": "ros-init",
+                "name": {
+                  "kind": "string-literal",
+                  "literal": "xbeeCoordinator"
+                }
+              },
+              {
+                "kind": "assignment",
+                "variable": "v0",
+                "value": {
+                  "kind": "reads-param",
+                  "name": {
+                    "kind": "concatenate",
+                    "lhs": {
+                      "kind": "node-handle",
+                      "namespace": {
+                        "kind": "string-literal",
+                        "literal": ""
+                      }
+                    },
+                    "rhs": {
+                      "kind": "string-literal",
+                      "literal": "xbeeCoordinator/port"
+                    }
+                  }
+                }
+              },
+              {
+                "kind": "call",
+                "callee": "XbeeCoordinator::XbeeCoordinator",
+                "arguments": {
+                  "nh": {
+                    "kind": "node-handle",
+                    "namespace": {
+                      "kind": "string-literal",
+                      "literal": ""
+                    }
+                  },
+                  "port": {
+                    "kind": "unknown"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
