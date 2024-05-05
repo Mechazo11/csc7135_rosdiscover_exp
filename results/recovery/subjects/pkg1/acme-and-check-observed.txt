@@ -6,3 +6,11 @@
 2024-05-04 19:21:37.033 | DEBUG    | rosdiscover.acme.acme:_check_acme:462 - Checking ran successfully
 2024-05-04 19:21:37.033 | DEBUG    | rosdiscover.acme.acme:_check_acme:463 - b'Acme Parser ROS Checker (release 1.0): ROS system failed to typecheck.\n'
 2024-05-04 19:21:37.033 | INFO     | rosdiscover.acme.acme:_output:448 - Robot architecture has no errors
+2024-05-05 14:39:18.599 | DEBUG    | common.acme:generate_and_check_acme:50 - Calling rosdiscover: ['acme', '/tmp/tmpos3iaf3j.rosdiscover.yml', '--from-yml', '/home/az/Documents/csc7135_rosdiscover_exp/results/recovery/subjects/pkg1/observed.architecture.yml', '--acme', '/home/az/Documents/csc7135_rosdiscover_exp/results/recovery/subjects/pkg1/observed.architecture.acme', '--check', '--ignore-list', '/tmp/tmpaf5lwwvcignore.txt']
+2024-05-05 14:39:18.604 | INFO     | rosdiscover.acme.acme:generate_acme_file:443 - Writing Acme to /home/az/Documents/csc7135_rosdiscover_exp/results/recovery/subjects/pkg1/observed.architecture.acme
+2024-05-05 14:39:18.604 | INFO     | rosdiscover.acme.acme:generate_acme_file:443 - Writing Acme to /home/az/Documents/csc7135_rosdiscover_exp/results/recovery/subjects/pkg1/observed.architecture.acme
+2024-05-05 14:39:18.604 | DEBUG    | rosdiscover.acme.acme:_check_acme:457 - Running Acme checker
+2024-05-05 14:39:18.604 | INFO     | rosdiscover.acme.acme:_output:448 - Checking architecture...
+2024-05-05 14:39:18.994 | DEBUG    | rosdiscover.acme.acme:_check_acme:462 - Checking ran successfully
+2024-05-05 14:39:18.994 | DEBUG    | rosdiscover.acme.acme:_check_acme:463 - b'Acme Parser ROS Checker (release 1.0): ROS system failed to typecheck.\n'
+2024-05-05 14:39:18.994 | INFO     | rosdiscover.acme.acme:_output:448 - Robot architecture has no errors
