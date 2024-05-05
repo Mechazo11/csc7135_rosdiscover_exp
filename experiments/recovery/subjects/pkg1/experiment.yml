@@ -1,5 +1,5 @@
 type: recovery
-subject: fetch_lsu
+subject: pkg1
 docker:
   type: templated
   image: pkg1
