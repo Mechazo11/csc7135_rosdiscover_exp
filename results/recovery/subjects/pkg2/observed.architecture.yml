@@ -1,0 +1,56 @@
+- action-clients: []
+  action-servers: []
+  filename: unknown
+  fullname: /fetchhardware_node
+  kind: ''
+  name: fetchhardware_node
+  namespace: /
+  nodelet: false
+  package: unknown
+  provenance: unknown
+  provides: []
+  pubs:
+  - format: std_msgs/String
+    implicit: false
+    name: /fetch/target_obj
+  - format: sensor_msgs/Image
+    implicit: false
+    name: /fetch/rgbd_data
+  - format: sensor_msgs/JointState
+    implicit: false
+    name: /fetch/joint_state
+  reads: []
+  subs:
+  - format: sensor_msgs/JointState
+    implicit: false
+    name: /fetch/cmd_joint
+  uses: []
+  writes: []
+- action-clients: []
+  action-servers: []
+  filename: unknown
+  fullname: /fetchcontroller_node
+  kind: ''
+  name: fetchcontroller_node
+  namespace: /
+  nodelet: false
+  package: unknown
+  provenance: unknown
+  provides: []
+  pubs:
+  - format: sensor_msgs/JointState
+    implicit: false
+    name: /fetch/cmd_joint
+  reads: []
+  subs:
+  - format: sensor_msgs/JointState
+    implicit: false
+    name: /fetch/JointStates
+  - format: sensor_msgs/Image
+    implicit: false
+    name: /fetch/rgbd_data
+  - format: std_msgs/String
+    implicit: false
+    name: /fetch/targets
+  uses: []
+  writes: []

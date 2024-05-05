@@ -1,5 +1,5 @@
 type: recovery
-subject: pkg1
+subject: pkg2
 docker:
   type: templated
   image: csc7135_proj
@@ -35,4 +35,4 @@ sources:
 - /opt/ros/noetic/setup.bash
 - /home/ros_ws/devel/setup.bash
 launches:
-  - /home/ros_ws/src/csc7135_pkg1/launch/pkg1_bad.launch
+  - /home/ros_ws/src/csc7135_pkg2/launch/pkg2_exp.launch
