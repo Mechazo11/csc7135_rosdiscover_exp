@@ -1,0 +1,72 @@
+import families/ROSFam.acme;
+system _home_az_Documents_csc7135_rosdiscover_exp_results_recovery_subjects_pkg2_observed_architecture : ROSFam = new ROSFam extended with {
+   component fetchhardware_node : ROSNodeCompT = new ROSNodeCompT extended with {
+             port _fetch_joint_state_pub : TopicAdvertisePortT = new TopicAdvertisePortT extended with {
+        property msg_type = "sensor_msgs/JointState";
+        property topic = "/fetch/joint_state";
+    };
+    
+     port _fetch_rgbd_data_pub : TopicAdvertisePortT = new TopicAdvertisePortT extended with {
+        property msg_type = "sensor_msgs/Image";
+        property topic = "/fetch/rgbd_data";
+    };
+    
+     port _fetch_target_obj_pub : TopicAdvertisePortT = new TopicAdvertisePortT extended with {
+        property msg_type = "std_msgs/String";
+        property topic = "/fetch/target_obj";
+    };
+    
+     port _fetch_cmd_joint_sub : TopicSubscribePortT = new TopicSubscribePortT extended with {
+        property msg_type = "sensor_msgs/JointState";
+        property topic = "/fetch/cmd_joint";
+    };
+    
+        property name = "fetchhardware_node";
+        property launchedBy = "unknown";
+    };
+    
+   component fetchcontroller_node : ROSNodeCompT = new ROSNodeCompT extended with {
+             port _fetch_cmd_joint_pub : TopicAdvertisePortT = new TopicAdvertisePortT extended with {
+        property msg_type = "sensor_msgs/JointState";
+        property topic = "/fetch/cmd_joint";
+    };
+    
+     port _fetch_JointStates_sub : TopicSubscribePortT = new TopicSubscribePortT extended with {
+        property msg_type = "sensor_msgs/JointState";
+        property topic = "/fetch/JointStates";
+    };
+    
+     port _fetch_targets_sub : TopicSubscribePortT = new TopicSubscribePortT extended with {
+        property msg_type = "std_msgs/String";
+        property topic = "/fetch/targets";
+    };
+    
+     port _fetch_rgbd_data_sub : TopicSubscribePortT = new TopicSubscribePortT extended with {
+        property msg_type = "sensor_msgs/Image";
+        property topic = "/fetch/rgbd_data";
+    };
+    
+        property name = "fetchcontroller_node";
+        property launchedBy = "unknown";
+    };
+       connector _fetch_rgbd_data_conn : TopicConnectorT = new TopicConnectorT extended with {
+         role fetchhardware_node_pub : ROSTopicAdvertiserRoleT = new ROSTopicAdvertiserRoleT;
+    
+    role fetchcontroller_node_sub : ROSTopicSubscriberRoleT = new ROSTopicSubscriberRoleT;
+    
+        property msg_type = "sensor_msgs/Image";
+        property topic = "/fetch/rgbd_data";
+    };
+    
+   connector _fetch_cmd_joint_conn : TopicConnectorT = new TopicConnectorT extended with {
+         role fetchcontroller_node_pub : ROSTopicAdvertiserRoleT = new ROSTopicAdvertiserRoleT;
+    
+    role fetchhardware_node_sub : ROSTopicSubscriberRoleT = new ROSTopicSubscriberRoleT;
+    
+        property msg_type = "sensor_msgs/JointState";
+        property topic = "/fetch/cmd_joint";
+    };
+      attachment fetchhardware_node._fetch_rgbd_data_pub to _fetch_rgbd_data_conn.fetchhardware_node_pub;
+  attachment fetchcontroller_node._fetch_rgbd_data_sub to _fetch_rgbd_data_conn.fetchcontroller_node_sub;
+  attachment fetchhardware_node._fetch_cmd_joint_sub to _fetch_cmd_joint_conn.fetchhardware_node_sub;
+  attachment fetchcontroller_node._fetch_cmd_joint_pub to _fetch_cmd_joint_conn.fetchcontroller_node_pub;}
